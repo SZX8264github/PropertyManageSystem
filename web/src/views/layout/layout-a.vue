@@ -5,9 +5,9 @@
       <div class="sidebar-header">
         <div class="brand-mark">
           <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="4" y="4" width="24" height="24" stroke="#C4A35A" stroke-width="1"/>
-            <rect x="8" y="8" width="16" height="16" stroke="#C4A35A" stroke-width="0.75"/>
-            <rect x="12" y="12" width="8" height="8" fill="#C4A35A"/>
+            <rect x="4" y="4" width="24" height="24" stroke="#2563EB" stroke-width="1.5"/>
+            <rect x="8" y="8" width="16" height="16" stroke="#2563EB" stroke-width="1"/>
+            <rect x="12" y="12" width="8" height="8" fill="#2563EB"/>
           </svg>
         </div>
         <transition name="fade">
@@ -89,19 +89,19 @@ const menuList = computed(() => {
 const currentPageTitle = computed(() => {
   const path = route.path;
   const titleMap = {
-    '/index': '首页',
-    '/district': '小区管理',
-    '/building': '楼栋管理',
-    '/house': '房屋管理',
-    '/parking': '车位管理',
-    '/owner': '业主管理',
-    '/property': '物业员工',
-    '/admin': '管理员',
-    '/fee': '费用管理',
-    '/repair': '报修管理',
-    '/complaint': '投诉管理',
-    '/announce': '公告管理',
-    '/system': '系统管理',
+    '/index-a': '首页',
+    '/district-a': '小区管理',
+    '/building-a': '楼栋管理',
+    '/house-a': '房屋管理',
+    '/parking-a': '车位管理',
+    '/owner-a': '业主管理',
+    '/property-a': '物业员工',
+    '/admin-a': '管理员',
+    '/fee-a': '费用管理',
+    '/repair-a': '报修管理',
+    '/complaint-a': '投诉管理',
+    '/announce-a': '公告管理',
+    '/system-a': '系统管理',
   };
   return titleMap[path] || '首页';
 });
@@ -153,7 +153,7 @@ onMounted(() => {
   display: flex;
   width: 100vw;
   height: 100vh;
-  background: #FAFAF8;
+  background: #FFFFFF;
   overflow: hidden;
 }
 
@@ -161,7 +161,7 @@ onMounted(() => {
 .sidebar {
   width: 240px;
   height: 100vh;
-  background: #2C2C2C;
+  background: #1A1A1A;
   display: flex;
   flex-direction: column;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -194,7 +194,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   padding: 24px 20px;
-  border-bottom: 1px solid rgba(245, 240, 235, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .brand-mark {
@@ -216,16 +216,15 @@ onMounted(() => {
 
 .brand-name {
   font-size: 14px;
-  font-weight: 400;
-  color: #F5F0EB;
-  letter-spacing: 0.1em;
-  font-family: 'Noto Serif SC', 'STKaiti', serif;
+  font-weight: 600;
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
 }
 
 .brand-en {
   font-size: 9px;
-  color: rgba(245, 240, 235, 0.3);
-  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.15em;
   margin-top: 2px;
 }
 
@@ -244,28 +243,28 @@ onMounted(() => {
     height: 44px;
     line-height: 44px;
     margin: 4px 12px;
-    border-radius: 4px;
-    color: rgba(245, 240, 235, 0.5);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.5);
     transition: all 0.2s ease;
     font-size: 13px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
 
     &:hover {
-      background: rgba(245, 240, 235, 0.05);
-      color: #F5F0EB;
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
     }
 
     &.is-active {
-      background: rgba(196, 163, 90, 0.15);
-      color: #C4A35A;
+      background: #2563EB;
+      color: #FFFFFF;
     }
   }
 
   :deep(.el-sub-menu) {
     .el-sub-menu__title {
       &:hover {
-        background: rgba(245, 240, 235, 0.05);
-        color: #F5F0EB;
+        background: rgba(255, 255, 255, 0.08);
+        color: #FFFFFF;
       }
     }
 
@@ -274,13 +273,13 @@ onMounted(() => {
       min-width: auto;
 
       &:hover {
-        background: rgba(245, 240, 235, 0.05);
-        color: #F5F0EB;
+        background: rgba(255, 255, 255, 0.08);
+        color: #FFFFFF;
       }
 
       &.is-active {
-        background: rgba(196, 163, 90, 0.15);
-        color: #C4A35A;
+        background: #2563EB;
+        color: #FFFFFF;
       }
     }
   }
@@ -288,7 +287,7 @@ onMounted(() => {
 
 .sidebar-footer {
   padding: 16px;
-  border-top: 1px solid rgba(245, 240, 235, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .collapse-btn {
@@ -298,20 +297,20 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   background: transparent;
-  border: 1px solid rgba(245, 240, 235, 0.1);
-  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    background: rgba(245, 240, 235, 0.05);
-    border-color: rgba(245, 240, 235, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   svg {
     width: 18px;
     height: 18px;
-    color: rgba(245, 240, 235, 0.5);
+    color: rgba(255, 255, 255, 0.5);
   }
 }
 
@@ -326,7 +325,7 @@ onMounted(() => {
 // 顶部栏
 .topbar {
   height: 72px;
-  background: #FAFAF8;
+  background: #FFFFFF;
   border-bottom: 1px solid #E5E5E5;
   display: flex;
   align-items: center;
@@ -337,10 +336,9 @@ onMounted(() => {
 
 .page-title {
   font-size: 18px;
-  font-weight: 300;
-  color: #2C2C2C;
-  letter-spacing: 0.05em;
-  font-family: 'Noto Serif SC', 'STKaiti', serif;
+  font-weight: 600;
+  color: #1A1A1A;
+  letter-spacing: -0.01em;
 }
 
 .topbar-right {
@@ -354,22 +352,21 @@ onMounted(() => {
   align-items: center;
   gap: 12px;
   padding: 8px 16px;
-  background: transparent;
+  background: #F9FAFB;
   border: 1px solid #E5E5E5;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    border-color: #C4A35A;
+    border-color: #D1D5DB;
   }
 }
 
 .user-avatar {
   width: 32px;
   height: 32px;
-  background: transparent;
-  border: 1px solid #E5E5E5;
+  background: #E5E7EB;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -378,15 +375,15 @@ onMounted(() => {
   svg {
     width: 18px;
     height: 18px;
-    color: #8C8C8C;
+    color: #6B7280;
   }
 }
 
 .user-name {
   font-size: 13px;
-  font-weight: 400;
-  color: #2C2C2C;
-  letter-spacing: 0.02em;
+  font-weight: 500;
+  color: #1A1A1A;
+  letter-spacing: 0.01em;
 }
 
 // 页面内容
@@ -394,7 +391,7 @@ onMounted(() => {
   flex: 1;
   padding: 32px 40px;
   overflow-y: auto;
-  background: #FAFAF8;
+  background: #F9FAFB;
 }
 
 // 过渡动画

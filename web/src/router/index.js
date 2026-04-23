@@ -8,6 +8,11 @@ const routes = [
     component: () => import("@/views/login/index.vue"),
   },
   {
+    path: "/login-a",
+    name: "LoginA",
+    component: () => import("@/views/login/login-a.vue"),
+  },
+  {
     path: "/",
     name: "Layout",
     meta: {
@@ -78,6 +83,76 @@ const routes = [
     ],
   },
   {
+    path: "/a",
+    name: "LayoutA",
+    meta: {
+      loginRequire: true,
+    },
+    component: () => import("@/views/layout/layout-a.vue"),
+    children: [
+      {
+        path: "index",
+        name: "IndexA",
+        component: () => import("@/views/system/system-a.vue"),
+      },
+      {
+        path: "ownerList",
+        name: "OwnerListA",
+        component: () => import("@/views/user/ownerList.vue"),
+      },
+      {
+        path: "propertyList",
+        name: "PropertyListA",
+        component: () => import("@/views/user/propertyList.vue"),
+      },
+      {
+        path: "adminList",
+        name: "AdminListA",
+        component: () => import("@/views/user/adminList.vue"),
+      },
+      {
+        path: "districtList",
+        name: "DistrictListA",
+        component: () => import("@/views/district/districtList.vue"),
+      },
+      {
+        path: "buildingList",
+        name: "BuildingListA",
+        component: () => import("@/views/building/buildingList.vue"),
+      },
+      {
+        path: "houseList",
+        name: "HouseListA",
+        component: () => import("@/views/building/houseList.vue"),
+      },
+      {
+        path: "parkingList",
+        name: "ParkingListA",
+        component: () => import("@/views/parking/parkingList.vue"),
+      },
+      {
+        path: "feeList",
+        name: "FeeListA",
+        component: () => import("@/views/fee/feeList.vue"),
+      },
+      {
+        path: "announceList",
+        name: "AnnounceListA",
+        component: () => import("@/views/announce/announceList.vue"),
+      },
+      {
+        path: "repairList",
+        name: "RepairListA",
+        component: () => import("@/views/repair/repairList.vue"),
+      },
+      {
+        path: "complaintList",
+        name: "ComplaintListA",
+        component: () => import("@/views/complaint/complaintList.vue"),
+      },
+    ],
+  },
+  {
     path: "/",
     redirect: "/index",
   },
@@ -89,14 +164,15 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from) => {
-  if (to?.meta?.loginRequire) {
-    let token = getSessionStorage();
-    if (!token) {
-      return {
-        path: "/login",
-      };
-    }
-  }
+  // 临时跳过登录验证，直接进入系统
+  // if (to?.meta?.loginRequire) {
+  //   let token = getSessionStorage();
+  //   if (!token) {
+  //     return {
+  //       path: "/login",
+  //     };
+  //   }
+  // }
 });
 
 export default router;

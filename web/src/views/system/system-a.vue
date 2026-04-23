@@ -5,7 +5,7 @@
       <div class="welcome-content">
         <div class="welcome-text">
           <h1>{{ getGreeting() }}，{{ data.loginUser.username || '用户' }}</h1>
-          <p>欢迎回到温馨家园，今天也是美好的一天</p>
+          <p>欢迎回到物业管理系统，今天也是美好的一天</p>
         </div>
         <div class="welcome-avatar">
           <img :src="filterPhoto(data.loginUser.headPic)" alt="avatar" />
@@ -16,7 +16,10 @@
     <!-- 统计卡片 -->
     <div class="stats-grid">
       <div class="stat-card" v-for="(stat, index) in stats" :key="index">
-        <div class="stat-label">{{ stat.label }}</div>
+        <div class="stat-header">
+          <span class="stat-label">{{ stat.label }}</span>
+          <span class="stat-index">{{ String(index + 1).padStart(2, '0') }}</span>
+        </div>
         <div class="stat-value">{{ stat.value }}</div>
         <div class="stat-icon">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,11 +35,11 @@
         <h3>近五个月缴费统计</h3>
         <div class="chart-legend">
           <span class="legend-item">
-            <span class="legend-dot" style="background: #C4A35A"></span>
+            <span class="legend-dot" style="background: #2563EB"></span>
             待支付
           </span>
           <span class="legend-item">
-            <span class="legend-dot" style="background: #2C2C2C"></span>
+            <span class="legend-dot" style="background: #1A1A1A"></span>
             已支付
           </span>
         </div>
@@ -77,10 +80,10 @@ const chartInstance = shallowRef(null);
 const initOption = ref({
   tooltip: {
     trigger: "axis",
-    backgroundColor: "rgba(250, 250, 248, 0.95)",
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
     borderColor: "#E5E5E5",
     textStyle: {
-      color: "#2C2C2C",
+      color: "#1A1A1A",
     },
   },
   grid: {
@@ -99,7 +102,7 @@ const initOption = ref({
       },
     },
     axisLabel: {
-      color: "#8C8C8C",
+      color: "#6B7280",
     },
   },
   yAxis: {
@@ -109,11 +112,11 @@ const initOption = ref({
       show: false,
     },
     axisLabel: {
-      color: "#8C8C8C",
+      color: "#6B7280",
     },
     splitLine: {
       lineStyle: {
-        color: "#F0F0F0",
+        color: "#F3F4F6",
       },
     },
   },
@@ -126,11 +129,11 @@ const initOption = ref({
       symbol: "circle",
       symbolSize: 6,
       lineStyle: {
-        color: "#C4A35A",
-        width: 1.5,
+        color: "#2563EB",
+        width: 2,
       },
       itemStyle: {
-        color: "#C4A35A",
+        color: "#2563EB",
       },
       areaStyle: {
         color: {
@@ -140,8 +143,8 @@ const initOption = ref({
           x2: 0,
           y2: 1,
           colorStops: [
-            { offset: 0, color: "rgba(196, 163, 90, 0.15)" },
-            { offset: 1, color: "rgba(196, 163, 90, 0.01)" },
+            { offset: 0, color: "rgba(37, 99, 235, 0.15)" },
+            { offset: 1, color: "rgba(37, 99, 235, 0.01)" },
           ],
         },
       },
@@ -154,11 +157,11 @@ const initOption = ref({
       symbol: "circle",
       symbolSize: 6,
       lineStyle: {
-        color: "#2C2C2C",
-        width: 1.5,
+        color: "#1A1A1A",
+        width: 2,
       },
       itemStyle: {
-        color: "#2C2C2C",
+        color: "#1A1A1A",
       },
       areaStyle: {
         color: {
@@ -168,8 +171,8 @@ const initOption = ref({
           x2: 0,
           y2: 1,
           colorStops: [
-            { offset: 0, color: "rgba(44, 44, 44, 0.08)" },
-            { offset: 1, color: "rgba(44, 44, 44, 0.01)" },
+            { offset: 0, color: "rgba(26, 26, 26, 0.08)" },
+            { offset: 1, color: "rgba(26, 26, 26, 0.01)" },
           ],
         },
       },
@@ -344,17 +347,16 @@ onUnmounted(() => {
 .welcome-text {
   h1 {
     font-size: 28px;
-    font-weight: 300;
-    color: #2C2C2C;
+    font-weight: 600;
+    color: #1A1A1A;
     margin-bottom: 8px;
-    letter-spacing: 0.05em;
-    font-family: 'Noto Serif SC', 'STKaiti', serif;
+    letter-spacing: -0.02em;
   }
 
   p {
     font-size: 14px;
-    color: #8C8C8C;
-    letter-spacing: 0.02em;
+    color: #6B7280;
+    letter-spacing: 0.01em;
   }
 }
 
@@ -363,7 +365,7 @@ onUnmounted(() => {
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    border: 1px solid #E5E5E5;
+    border: 2px solid #E5E5E5;
     object-fit: cover;
   }
 }
@@ -380,37 +382,51 @@ onUnmounted(() => {
   border: 1px solid #E5E5E5;
   padding: 24px;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 
   &:hover {
-    border-color: #C4A35A;
+    border-color: #2563EB;
   }
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .stat-label {
   font-size: 12px;
-  color: #8C8C8C;
-  letter-spacing: 0.05em;
+  font-weight: 500;
+  color: #6B7280;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  margin-bottom: 8px;
+}
+
+.stat-index {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2563EB;
+  letter-spacing: 0.05em;
 }
 
 .stat-value {
   font-size: 32px;
-  font-weight: 300;
-  color: #2C2C2C;
-  font-family: 'Noto Serif SC', 'STKaiti', serif;
+  font-weight: 600;
+  color: #1A1A1A;
+  letter-spacing: -0.02em;
 }
 
 .stat-icon {
   position: absolute;
-  top: 24px;
+  bottom: 24px;
   right: 24px;
 
   svg {
     width: 20px;
     height: 20px;
-    color: #C4A35A;
+    color: #2563EB;
   }
 }
 
@@ -433,10 +449,9 @@ onUnmounted(() => {
 
   h3 {
     font-size: 16px;
-    font-weight: 400;
-    color: #2C2C2C;
-    letter-spacing: 0.05em;
-    font-family: 'Noto Serif SC', 'STKaiti', serif;
+    font-weight: 600;
+    color: #1A1A1A;
+    letter-spacing: -0.01em;
   }
 }
 
@@ -450,8 +465,8 @@ onUnmounted(() => {
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  color: #8C8C8C;
-  letter-spacing: 0.02em;
+  color: #6B7280;
+  letter-spacing: 0.01em;
 }
 
 .legend-dot {

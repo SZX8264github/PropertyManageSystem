@@ -1,28 +1,18 @@
 <template>
   <div class="login-container">
-    <!-- 左侧装饰区 -->
+    <!-- 左侧登录区 -->
     <div class="login-left">
-      <div class="left-content">
-        <div class="brand-mark">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="8" width="32" height="32" stroke="#C4A35A" stroke-width="1.5"/>
-            <rect x="14" y="14" width="20" height="20" stroke="#C4A35A" stroke-width="1"/>
-            <rect x="20" y="20" width="8" height="8" fill="#C4A35A"/>
-          </svg>
-        </div>
-        <h1 class="brand-title">小区物业管理系统</h1>
-        <p class="brand-subtitle">Property Management System</p>
-        <div class="brand-line"></div>
-        <p class="brand-philosophy">以空为器，以简为美</p>
-      </div>
-    </div>
-
-    <!-- 右侧登录区 -->
-    <div class="login-right">
       <div class="login-card">
         <div class="card-header">
-          <h2>登录</h2>
-          <p>欢迎回来，请登录您的账户</p>
+          <div class="brand-mark">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="8" width="32" height="32" stroke="#2563EB" stroke-width="2"/>
+              <rect x="14" y="14" width="20" height="20" stroke="#2563EB" stroke-width="1.5"/>
+              <rect x="20" y="20" width="8" height="8" fill="#2563EB"/>
+            </svg>
+          </div>
+          <h1>小区物业管理系统</h1>
+          <p>Property Management System</p>
         </div>
 
         <form class="login-form" @submit.prevent="handleLogin">
@@ -80,13 +70,37 @@
       </div>
     </div>
 
+    <!-- 右侧装饰区 -->
+    <div class="login-right">
+      <div class="right-content">
+        <div class="typography-showcase">
+          <span class="large-text">P</span>
+          <span class="medium-text">roperty</span>
+        </div>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-number">01</span>
+            <span class="info-label">专业管理</span>
+          </div>
+          <div class="info-item">
+            <span class="info-number">02</span>
+            <span class="info-label">高效服务</span>
+          </div>
+          <div class="info-item">
+            <span class="info-number">03</span>
+            <span class="info-label">智慧社区</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- 登录成功动画 -->
     <div class="success-overlay" :class="{ active: showOverlay }">
       <div class="success-content">
         <div class="success-icon">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="22" stroke="#C4A35A" stroke-width="1.5"/>
-            <path d="M14 24L21 31L34 18" stroke="#C4A35A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="24" cy="24" r="22" stroke="#2563EB" stroke-width="2"/>
+            <path d="M14 24L21 31L34 18" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <p>登录成功</p>
@@ -132,7 +146,7 @@ const handleLogin = async () => {
     showOverlay.value = true;
 
     setTimeout(() => {
-      router.push("/index");
+      router.push("/index-a");
     }, 1500);
   } else {
     ElMessage.error(response.msg);
@@ -147,90 +161,19 @@ const handleLogin = async () => {
   width: 100vw;
   height: 100vh;
   display: flex;
-  background: #FAFAF8;
+  background: #FFFFFF;
   overflow: hidden;
 }
 
-// 左侧装饰区
+// 左侧登录区
 .login-left {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #2C2C2C;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:
-      linear-gradient(135deg, rgba(196, 163, 90, 0.03) 0%, transparent 50%),
-      linear-gradient(225deg, rgba(196, 163, 90, 0.02) 0%, transparent 50%);
-  }
-}
-
-.left-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 40px;
-}
-
-.brand-mark {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 32px;
-
-  svg {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.brand-title {
-  font-size: 32px;
-  font-weight: 300;
-  color: #F5F0EB;
-  letter-spacing: 0.15em;
-  margin-bottom: 8px;
-  font-family: 'Noto Serif SC', 'STKaiti', serif;
-}
-
-.brand-subtitle {
-  font-size: 12px;
-  color: rgba(245, 240, 235, 0.4);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-bottom: 32px;
-}
-
-.brand-line {
-  width: 40px;
-  height: 1px;
-  background: #C4A35A;
-  margin: 0 auto 32px;
-}
-
-.brand-philosophy {
-  font-size: 14px;
-  color: rgba(245, 240, 235, 0.6);
-  letter-spacing: 0.1em;
-  font-family: 'Noto Serif SC', 'STKaiti', serif;
-}
-
-// 右侧登录区
-.login-right {
   width: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 60px;
-  background: #FAFAF8;
+  background: #FFFFFF;
+  border-right: 1px solid #E5E5E5;
 }
 
 .login-card {
@@ -241,107 +184,116 @@ const handleLogin = async () => {
 .card-header {
   margin-bottom: 48px;
 
-  h2 {
-    font-size: 28px;
-    font-weight: 300;
-    color: #2C2C2C;
-    letter-spacing: 0.05em;
+  .brand-mark {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 24px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1A1A1A;
+    letter-spacing: -0.02em;
     margin-bottom: 8px;
-    font-family: 'Noto Serif SC', 'STKaiti', serif;
   }
 
   p {
     font-size: 14px;
-    color: #8C8C8C;
-    letter-spacing: 0.02em;
+    color: #6B7280;
+    letter-spacing: 0.01em;
   }
 }
 
 .login-form {
   .form-group {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .form-label {
     display: block;
     font-size: 12px;
-    color: #8C8C8C;
-    letter-spacing: 0.05em;
+    font-weight: 500;
+    color: #6B7280;
+    letter-spacing: 0.02em;
     margin-bottom: 8px;
-    text-transform: uppercase;
   }
 
   .form-input {
     width: 100%;
-    padding: 14px 0;
-    font-size: 16px;
-    color: #2C2C2C;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #E5E5E5;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #1A1A1A;
+    background: #F9FAFB;
+    border: 1px solid #E5E5E5;
+    border-radius: 6px;
     outline: none;
-    transition: all 0.3s ease;
-    font-family: 'Noto Sans SC', sans-serif;
+    transition: all 0.2s ease;
 
     &::placeholder {
-      color: #C4C4C4;
+      color: #9CA3AF;
     }
 
     &:focus {
-      border-bottom-color: #C4A35A;
+      border-color: #2563EB;
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
     }
   }
 }
 
 .role-selector {
   display: flex;
-  gap: 24px;
+  gap: 16px;
 
   .role-option {
     cursor: pointer;
-    padding: 8px 0;
-    position: relative;
+    padding: 8px 16px;
+    border: 1px solid #E5E5E5;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: #D1D5DB;
+    }
 
     &.active {
-      .role-name {
-        color: #2C2C2C;
-      }
+      border-color: #2563EB;
+      background: rgba(37, 99, 235, 0.05);
 
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: #C4A35A;
+      .role-name {
+        color: #2563EB;
       }
     }
 
     .role-name {
-      font-size: 14px;
-      color: #8C8C8C;
-      transition: color 0.3s ease;
-      letter-spacing: 0.02em;
+      font-size: 13px;
+      color: #6B7280;
+      transition: color 0.2s ease;
     }
   }
 }
 
 .login-btn {
   width: 100%;
-  padding: 16px;
+  padding: 12px;
   font-size: 14px;
-  font-weight: 400;
-  color: #FAFAF8;
-  background: #2C2C2C;
+  font-weight: 500;
+  color: #FFFFFF;
+  background: #2563EB;
   border: none;
-  letter-spacing: 0.15em;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 16px;
+  transition: all 0.2s ease;
+  margin-top: 8px;
 
   &:hover:not(:disabled) {
-    background: #1A1A1A;
+    background: #1D4ED8;
   }
 
   &:active:not(:disabled) {
@@ -357,9 +309,9 @@ const handleLogin = async () => {
     display: inline-block;
     width: 16px;
     height: 16px;
-    border: 1.5px solid rgba(250, 250, 248, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
-    border-top-color: #FAFAF8;
+    border-top-color: #FFFFFF;
     animation: spin 0.8s linear infinite;
   }
 }
@@ -376,8 +328,69 @@ const handleLogin = async () => {
 
   p {
     font-size: 12px;
-    color: #C4C4C4;
-    letter-spacing: 0.1em;
+    color: #9CA3AF;
+    letter-spacing: 0.02em;
+  }
+}
+
+// 右侧装饰区
+.login-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F9FAFB;
+  position: relative;
+  overflow: hidden;
+}
+
+.right-content {
+  position: relative;
+  z-index: 1;
+  padding: 60px;
+}
+
+.typography-showcase {
+  margin-bottom: 80px;
+
+  .large-text {
+    font-size: 120px;
+    font-weight: 700;
+    color: #1A1A1A;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .medium-text {
+    font-size: 48px;
+    font-weight: 300;
+    color: #6B7280;
+    letter-spacing: -0.02em;
+  }
+}
+
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .info-number {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2563EB;
+    letter-spacing: 0.05em;
+  }
+
+  .info-label {
+    font-size: 14px;
+    color: #6B7280;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -388,7 +401,7 @@ const handleLogin = async () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(44, 44, 44, 0.95);
+  background: rgba(26, 26, 26, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -417,9 +430,9 @@ const handleLogin = async () => {
   p {
     margin-top: 24px;
     font-size: 16px;
-    color: #F5F0EB;
-    letter-spacing: 0.1em;
-    font-family: 'Noto Serif SC', 'STKaiti', serif;
+    color: #FFFFFF;
+    letter-spacing: 0.05em;
+    font-weight: 500;
   }
 }
 
@@ -441,27 +454,17 @@ const handleLogin = async () => {
   }
 
   .login-left {
-    height: 200px;
-    flex: none;
-  }
-
-  .login-right {
     width: 100%;
     flex: 1;
     padding: 40px 24px;
   }
 
-  .brand-title {
-    font-size: 24px;
-  }
-
-  .brand-subtitle,
-  .brand-philosophy {
+  .login-right {
     display: none;
   }
 
-  .brand-line {
-    margin-bottom: 16px;
+  .typography-showcase {
+    display: none;
   }
 }
 </style>
