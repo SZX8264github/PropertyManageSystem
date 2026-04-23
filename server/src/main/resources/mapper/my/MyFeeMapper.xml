@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yjq.programmer.dao.my.MyFeeMapper">
+
+    <!--  根据时间范围和状态获取缴费数据  -->
+    <select id="getFeeTotalByDateAndState" resultType="java.lang.Integer">
+        select count(*) as total from fee where DATE_FORMAT(create_time, '%Y%m') = DATE_FORMAT(date_sub(curdate(), interval #{queryMap.interval} month), '%Y%m')
+        and state in
+        <foreach collection="stateList" item="item" open="(" close=")" separator=",">
+           #{item}
+        </foreach>
+        <if test="queryMap.userIdList != null and queryMap.userIdList.size() > 0">
+            and user_id in
+            <foreach collection="queryMap.userIdList" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+</mapper>
